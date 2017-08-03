@@ -27,7 +27,10 @@
     "byline": "^4.2.2",
     "csv-parse": "^1.2.0",
     "multipipe": "^1.0.2",
-    "rdf-data-model": "^0.9.0",
+    "rdf-data-model": "^1.0.0",
+    "rdf-ext": "^1.0.0",
+    "rdf-parser-jsonld": "^1.0.1",
+    "rdf-parser-n3": "^1.0.0",
     "readable-stream": "^2.2.6",
     "through2": "^2.0.3",
     "uri-templates": "^0.2.0"
