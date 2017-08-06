@@ -96,12 +96,7 @@ describe('ObjectParserTransform', () => {
     input.end()
 
     return rdf.dataset().import(parser).then((actual) => {
-      if (!actual.equals(expected)) {
-        console.error('expected: ' + expected.toString())
-        console.error('actual: ' + actual.toString())
-
-        assert(false)
-      }
+      assert.equal(actual.toCanonical(), expected.toCanonical())
     })
   })
 })
