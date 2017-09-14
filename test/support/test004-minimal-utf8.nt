@@ -2,24 +2,12 @@
 <http://example.org/id/343555> <http://vocab.example.org/id> "343555" .
 <http://example.org/id/343555> <http://vocab.example.org/string> "Die nacht wird kurz" .
 <http://example.org/id/343555> <http://vocab.example.org/int> "14" .
-_:g25315160 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Usage> .
-_:g25315160 <http://www.w3.org/ns/prov#hadRole> <http://www.w3.org/ns/csvw#csvEncodedTabularData> .
-_:g25315160 <http://www.w3.org/ns/prov#entity> <file://data/test004-minimal-utf8.csv> .
-_:g26663000 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Activity> .
-_:g26663000 <http://www.w3.org/ns/prov#startedAtTime> "2017-09-14T05:50:57Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
-_:g26663000 <http://www.w3.org/ns/prov#qualifiedUsage> _:g25315160 .
-_:g26663000 <http://www.w3.org/ns/prov#qualifiedUsage> _:g25286060 .
-_:g26663000 <http://www.w3.org/ns/prov#wasAssociatedWith> <http://rubygems.org/gems/rdf-tabular> .
-_:g26663000 <http://www.w3.org/ns/prov#endedAtTime> "2017-09-14T05:50:57Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
 _:g26743080 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/csvw#Row> .
-_:g26743080 <http://www.w3.org/ns/csvw#url> <file://data/test004-minimal-utf8.csv#row=4> .
+_:g26743080 <http://www.w3.org/ns/csvw#url> <test004-minimal-utf8.csv#row=4> .
 _:g26743080 <http://www.w3.org/ns/csvw#rownum> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
 _:g26743080 <http://www.w3.org/ns/csvw#describes> <http://example.org/id/234665> .
-_:g25286060 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/prov#Usage> .
-_:g25286060 <http://www.w3.org/ns/prov#hadRole> <http://www.w3.org/ns/csvw#tabularMetadata> .
-_:g25286060 <http://www.w3.org/ns/prov#entity> <file://data/test004-minimal-utf8.csv-metadata.json> .
 _:g26982240 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/csvw#Row> .
-_:g26982240 <http://www.w3.org/ns/csvw#url> <file://data/test004-minimal-utf8.csv#row=2> .
+_:g26982240 <http://www.w3.org/ns/csvw#url> <test004-minimal-utf8.csv#row=2> .
 _:g26982240 <http://www.w3.org/ns/csvw#rownum> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
 _:g26982240 <http://www.w3.org/ns/csvw#describes> <http://example.org/id/234345> .
 <http://example.org/id/234345> <http://vocab.example.org/reference> "234.1123" .
@@ -27,12 +15,12 @@ _:g26982240 <http://www.w3.org/ns/csvw#describes> <http://example.org/id/234345>
 <http://example.org/id/234345> <http://vocab.example.org/string> "Der Tag ist noch lang" .
 <http://example.org/id/234345> <http://vocab.example.org/int> "12" .
 _:g27248120 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/csvw#Table> .
-_:g27248120 <http://www.w3.org/ns/csvw#url> <file://data/test004-minimal-utf8.csv> .
+_:g27248120 <http://www.w3.org/ns/csvw#url> <test004-minimal-utf8.csv> .
 _:g27248120 <http://www.w3.org/ns/csvw#row> _:g26743080 .
 _:g27248120 <http://www.w3.org/ns/csvw#row> _:g26982240 .
 _:g27248120 <http://www.w3.org/ns/csvw#row> _:g26878580 .
 _:g26878580 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/csvw#Row> .
-_:g26878580 <http://www.w3.org/ns/csvw#url> <file://data/test004-minimal-utf8.csv#row=3> .
+_:g26878580 <http://www.w3.org/ns/csvw#url> <test004-minimal-utf8.csv#row=3> .
 _:g26878580 <http://www.w3.org/ns/csvw#rownum> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
 _:g26878580 <http://www.w3.org/ns/csvw#describes> <http://example.org/id/343555> .
 <http://example.org/id/234665> <http://vocab.example.org/reference> "777.4858" .
@@ -40,5 +28,4 @@ _:g26878580 <http://www.w3.org/ns/csvw#describes> <http://example.org/id/343555>
 <http://example.org/id/234665> <http://vocab.example.org/string> "Jäää" .
 <http://example.org/id/234665> <http://vocab.example.org/int> "53" .
 _:g27249760 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/csvw#TableGroup> .
-_:g27249760 <http://www.w3.org/ns/prov#wasGeneratedBy> _:g26663000 .
 _:g27249760 <http://www.w3.org/ns/csvw#table> _:g27248120 .

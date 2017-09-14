@@ -9,7 +9,7 @@
         "propertyUrl": "http://vocab.example.org/id"
       },
       {
-        "titles": "String mit Ümlaut",
+        "titles": "String with Space",
         "propertyUrl": "http://vocab.example.org/string"
       },
       {
