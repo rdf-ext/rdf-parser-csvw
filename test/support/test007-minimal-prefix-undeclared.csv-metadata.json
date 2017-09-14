@@ -1,0 +1,25 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test001-minimal.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID}",
+    "columns": [
+      {
+        "titles": "ID",
+        "propertyUrl": "http://vocab.example.org/id"
+      },
+      {
+        "titles": "String",
+        "propertyUrl": "nonexistingprefix:declaration"
+      },
+      {
+        "titles": "Int",
+        "propertyUrl": "http://vocab.example.org/int"
+      },
+      {
+        "titles": "Reference",
+        "propertyUrl": "http://vocab.example.org/reference"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test006-minimal-prefix.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID}",
+    "columns": [
+      {
+        "titles": "ID",
+        "propertyUrl": "skos:notation"
+      },
+      {
+        "titles": "String",
+        "propertyUrl": "rdfs:label"
+      },
+      {
+        "titles": "Int",
+        "propertyUrl": "http://vocab.example.org/int"
+      },
+      {
+        "titles": "Reference",
+        "propertyUrl": "http://vocab.example.org/reference"
+      }
+    ]
+  }
+}

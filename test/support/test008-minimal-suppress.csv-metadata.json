@@ -1,0 +1,25 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test008-minimal-suppress.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID}",
+    "columns": [
+      {
+        "titles": "ID",
+        "propertyUrl": "http://vocab.example.org/id"
+      },
+      {
+        "titles": "String",
+        "suppressOutput": true
+      },
+      {
+        "titles": "Int",
+        "propertyUrl": "http://vocab.example.org/int"
+      },
+      {
+        "titles": "Reference",
+        "propertyUrl": "http://vocab.example.org/reference"
+      }
+    ]
+  }
+}
