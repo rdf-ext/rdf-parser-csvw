@@ -1,0 +1,25 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test009-minimal-space-template.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID with Space}",
+    "columns": [
+      {
+        "titles": "ID with Space",
+        "propertyUrl": "http://vocab.example.org/id"
+      },
+      {
+        "titles": "String",
+        "propertyUrl": "http://vocab.example.org/string"
+      },
+      {
+        "titles": "Int",
+        "propertyUrl": "http://vocab.example.org/int"
+      },
+      {
+        "titles": "Reference",
+        "propertyUrl": "http://vocab.example.org/reference"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test011-virtual-prefix.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID}",
+    "columns": [
+      {
+        "titles": "ID",
+        "propertyUrl": "http://vocab.example.org/id"
+      },
+      {
+        "titles": "String",
+        "propertyUrl": "http://vocab.example.org/string"
+      },
+      {
+        "titles": "Int",
+        "propertyUrl": "http://vocab.example.org/int"
+      },
+      {
+        "titles": "Reference",
+        "propertyUrl": "http://vocab.example.org/reference"
+      },
+      {
+        "virtual":true,
+        "propertyUrl":"http://vocab.example.org/type",
+        "valueUrl":"qb:Observation"
+      }
+    ]
+  }
+}
