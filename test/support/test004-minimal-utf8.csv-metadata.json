@@ -1,0 +1,25 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test004-minimal-utf8.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID}",
+    "columns": [
+      {
+        "titles": "ID",
+        "propertyUrl": "http://vocab.example.org/id"
+      },
+      {
+        "titles": "String mit Ümlaut",
+        "propertyUrl": "http://vocab.example.org/string"
+      },
+      {
+        "titles": "Int",
+        "propertyUrl": "http://vocab.example.org/int"
+      },
+      {
+        "titles": "Reference",
+        "propertyUrl": "http://vocab.example.org/reference"
+      }
+    ]
+  }
+}
