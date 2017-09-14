@@ -60,7 +60,7 @@ function loadTests () {
   try {
     fs.readFileSync(manifestFile)
   } catch (err) {
-    return Promise.resolve()
+    return Promise.resolve([])
   }
 
   return datasetFromN3Fs(manifestFile).then((manifest) => {
