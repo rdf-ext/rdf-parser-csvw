@@ -55,7 +55,15 @@ function datasetFromJsonLdFs (filename) {
 }
 
 function loadTests () {
-  return datasetFromN3Fs('test/spec/manifest-rdf.ttl').then((manifest) => {
+  const manifestFile = 'test/spec/manifest-rdf.ttl'
+
+  try {
+    fs.readFileSync(manifestFile)
+  } catch (err) {
+    return Promise.resolve()
+  }
+
+  return datasetFromN3Fs(manifestFile).then((manifest) => {
     let tests = manifest.match(
       null,
       rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'),
