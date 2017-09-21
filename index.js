@@ -1,5 +1,6 @@
 const assign = require('lodash/assign')
 const csvParser = require('./lib/csvParser')
+const Metadata = require('./lib/metadata')
 const ObjectParserTransform = require('./lib/ObjectParserTransform')
 
 class Parser {
@@ -9,9 +10,13 @@ class Parser {
 
   import (input, options) {
     options = assign({}, this.options, options)
+    options.metadata = new Metadata(options.metadata, options.baseIRI, options.factory)
 
-    const reader = csvParser()
-    const output = new ObjectParserTransform(options)
+    const reader = csvParser({
+      delimiter: options.metadata.delimiter
+    })
+
+    const output = new ObjectParserTransform(assign({tableSchema: options.metadata.tableSchemas[0]}, options))
 
     input.on('end', () => {
       if (!output.readable) {

@@ -11,7 +11,6 @@ const N3Parser = require('rdf-parser-n3')
 const Promise = require('bluebird')
 
 const blackList = [
-  '002',
   '006',
   '007',
   '009',

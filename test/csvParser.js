@@ -59,4 +59,32 @@ describe('csvParser', () => {
       assert.deepEqual(output, expected)
     })
   })
+
+  it('should parse lines with alternative delimiter', () => {
+    const input = new PassThrough()
+    const parser = csvParser({delimiter: ';'})
+
+    input.pipe(parser)
+
+    const output = []
+    const expected = [{
+      line: 2,
+      row: {
+        key0: 'value0',
+        key1: 'value1'
+      }
+    }]
+
+    parser.on('data', (data) => {
+      output.push(data)
+    })
+
+    input.write('key0;key1\n')
+    input.write('value0;value1\n')
+    input.end()
+
+    return rdf.waitFor(parser).then(() => {
+      assert.deepEqual(output, expected)
+    })
+  })
 })
