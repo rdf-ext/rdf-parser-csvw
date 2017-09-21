@@ -7,43 +7,57 @@ const rdf = require('rdf-ext')
 const CsvwParser = require('..')
 const JsonLdParser = require('rdf-parser-jsonld')
 const N3Parser = require('rdf-parser-n3')
-/*
-const whiteList = [
-  'manifest-rdf#test001',
-  'manifest-rdf#test005',
-  'manifest-rdf#test006',
-  'manifest-rdf#test007',
-  'manifest-rdf#test008',
-  'manifest-rdf#test009',
-  'manifest-rdf#test010',
-  'manifest-rdf#test011',
-  'manifest-rdf#test012',
-  'manifest-rdf#test013',
-  'manifest-rdf#test014',
-  'manifest-rdf#test017',
-  'manifest-rdf#test028',
-  'manifest-rdf#test132',
-  'manifest-rdf#test152',
-  'manifest-rdf#test155',
-  'manifest-rdf#test193',
-  'manifest-rdf#test195',
-  'manifest-rdf#test202',
-  'manifest-rdf#test209',
-  'manifest-rdf#test231',
-  'manifest-rdf#test232',
-  'manifest-rdf#test233',
-  'manifest-rdf#test234',
-  'manifest-rdf#test242',
-  'manifest-rdf#test248',
-  'manifest-rdf#test259',
-  'manifest-rdf#test260'
-]
-*/
-
-const whiteList = []
 
 const blackList = [
-  'manifest-rdf#test273'
+  'manifest-rdf#test015',
+  'manifest-rdf#test016',
+  'manifest-rdf#test018',
+  'manifest-rdf#test023',
+  'manifest-rdf#test027',
+  'manifest-rdf#test029',
+  'manifest-rdf#test030',
+  'manifest-rdf#test031',
+  'manifest-rdf#test032',
+  'manifest-rdf#test033',
+  'manifest-rdf#test034',
+  'manifest-rdf#test035',
+  'manifest-rdf#test036',
+  'manifest-rdf#test037',
+  'manifest-rdf#test038',
+  'manifest-rdf#test039',
+  'manifest-rdf#test116',
+  'manifest-rdf#test118',
+  'manifest-rdf#test121',
+  'manifest-rdf#test124',
+  'manifest-rdf#test149',
+  'manifest-rdf#test158',
+  'manifest-rdf#test168',
+  'manifest-rdf#test170',
+  'manifest-rdf#test171',
+  'manifest-rdf#test183',
+  'manifest-rdf#test187',
+  'manifest-rdf#test188',
+  'manifest-rdf#test189',
+  'manifest-rdf#test190',
+  'manifest-rdf#test228',
+  'manifest-rdf#test229',
+  'manifest-rdf#test235',
+  'manifest-rdf#test236',
+  'manifest-rdf#test237',
+  'manifest-rdf#test245',
+  'manifest-rdf#test246',
+  'manifest-rdf#test263',
+  'manifest-rdf#test264',
+  'manifest-rdf#test268',
+  'manifest-rdf#test273',
+  'manifest-rdf#test282',
+  'manifest-rdf#test283',
+  'manifest-rdf#test284',
+  'manifest-rdf#test285',
+  'manifest-rdf#test305',
+  'manifest-rdf#test306',
+  'manifest-rdf#test307'
+
 ]
 
 function datasetFromN3Fs (filename) {
@@ -113,12 +127,6 @@ function loadTests () {
         result: result
       }
     })
-
-    if (typeof whiteList !== 'undefined') {
-      tests = tests.filter((test) => {
-        return whiteList.indexOf(test.iri) !== -1
-      })
-    }
 
     if (typeof blackList !== 'undefined') {
       tests = tests.filter((test) => {
