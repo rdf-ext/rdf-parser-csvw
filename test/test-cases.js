@@ -15,8 +15,7 @@ const blackList = [
   '007',
   '009',
   '011',
-  '012',
-  '013'
+  '012'
 ]
 
 function datasetFromN3Fs (filename) {
