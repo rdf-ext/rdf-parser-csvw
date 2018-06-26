@@ -13,7 +13,8 @@ class Parser {
     options.metadata = new Metadata(options.metadata, options.baseIRI, options.factory)
 
     const reader = csvParser({
-      delimiter: options.metadata.delimiter
+      delimiter: options.metadata.delimiter,
+      relaxColumnCount: options.relaxColumnCount
     })
 
     const output = new ObjectParserTransform(assign({tableSchema: options.metadata.tableSchemas[0]}, options))
