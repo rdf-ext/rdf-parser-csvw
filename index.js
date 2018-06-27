@@ -14,7 +14,8 @@ class Parser {
 
     const reader = csvParser({
       delimiter: options.metadata.delimiter,
-      relaxColumnCount: options.relaxColumnCount
+      relaxColumnCount: options.relaxColumnCount,
+      skipLinesWithError: options.skipLinesWithError
     })
 
     const output = new ObjectParserTransform(assign({tableSchema: options.metadata.tableSchemas[0]}, options))
