@@ -7,6 +7,9 @@
     "lint": "standard",
     "test": "mocha"
   },
+  "bin" : {
+    "csvw-metadata" : "./bin/csvw-metadata.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/rdf-ext/rdf-parser-csvw.git"
@@ -37,6 +40,7 @@
   },
   "devDependencies": {
     "bluebird": "^3.5.0",
+    "commander": "^2.19.0",
     "glob": "^7.1.2",
     "mocha": "^2.4.5",
     "standard": "^7.0.1"
