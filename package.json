@@ -1,14 +1,14 @@
 {
   "name": "rdf-parser-csvw",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "CSV on the Web parser",
   "main": "index.js",
   "scripts": {
     "lint": "standard",
     "test": "mocha"
   },
-  "bin" : {
-    "csvw-metadata" : "./bin/csvw-metadata.js"
+  "bin": {
+    "csvw-metadata": "./bin/csvw-metadata.js"
   },
   "repository": {
     "type": "git",
