@@ -1,0 +1,23 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test001-minimal.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID}",
+    "columns": [
+      {
+        "titles": "ID",
+        "propertyUrl": "http://vocab.example.org/id"
+      },
+      {
+        "titles": "German",
+        "propertyUrl": "http://vocab.example.org/text",
+        "lang": "de"
+      },
+      {
+        "titles": "English",
+        "propertyUrl": "http://vocab.example.org/text",
+        "lang": "en"
+      }
+    ]
+  }
+}
