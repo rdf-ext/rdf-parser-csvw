@@ -57,15 +57,14 @@ const blackList = [
   'manifest-rdf#test305',
   'manifest-rdf#test306',
   'manifest-rdf#test307'
-
 ]
 
 function datasetFromN3Fs (filename) {
-  return rdf.dataset().import(N3Parser.import(fs.createReadStream(filename), {factory: rdf}))
+  return rdf.dataset().import(N3Parser.import(fs.createReadStream(filename), { factory: rdf }))
 }
 
 function datasetFromJsonLdFs (filename) {
-  return rdf.dataset().import(JsonLdParser.import(fs.createReadStream(filename), {factory: rdf}))
+  return rdf.dataset().import(JsonLdParser.import(fs.createReadStream(filename), { factory: rdf }))
 }
 
 function loadTests () {
@@ -154,7 +153,7 @@ loadTests().then((tests) => {
   describe('W3C spec tests', () => {
     tests.forEach((test) => {
       it(test.label, () => {
-        const parser = new CsvwParser({factory: rdf})
+        const parser = new CsvwParser({ factory: rdf })
         const input = fs.createReadStream('test/spec/' + test.input)
         const stream = parser.import(input, {
           baseIRI: path.basename(test.input),
@@ -168,7 +167,7 @@ loadTests().then((tests) => {
           const expected = results[0]
           const actual = results[1]
 
-          assert.equal(actual.toCanonical(), expected.toCanonical())
+          assert.strictEqual(actual.toCanonical(), expected.toCanonical())
         })
       })
     })

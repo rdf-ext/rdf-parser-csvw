@@ -4,8 +4,7 @@
   "description": "CSV on the Web parser",
   "main": "index.js",
   "scripts": {
-    "lint": "standard",
-    "test": "mocha"
+    "test": "standard && mocha"
   },
   "bin": {
     "csvw-metadata": "./bin/csvw-metadata.js"
@@ -43,7 +42,7 @@
     "commander": "^2.19.0",
     "glob": "^7.1.2",
     "mocha": "^2.4.5",
-    "standard": "^7.0.1"
+    "standard": "^12.0.1"
   },
   "readmeFilename": "README.md"
 }

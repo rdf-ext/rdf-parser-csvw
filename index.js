@@ -18,7 +18,7 @@ class Parser {
       skipLinesWithError: options.skipLinesWithError
     })
 
-    const output = new ObjectParserTransform(assign({tableSchema: options.metadata.tableSchemas[0]}, options))
+    const output = new ObjectParserTransform(assign({ tableSchema: options.metadata.tableSchemas[0] }, options))
 
     input.on('end', () => {
       if (!output.readable) {

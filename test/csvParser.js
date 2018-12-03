@@ -7,14 +7,14 @@ const PassThrough = require('readable-stream').PassThrough
 
 describe('csvParser', () => {
   it('should be a function', () => {
-    assert.equal(typeof csvParser, 'function')
+    assert.strictEqual(typeof csvParser, 'function')
   })
 
   it('should return a Transform', () => {
     const parser = csvParser()
 
-    assert.equal(parser.readable, true)
-    assert.equal(parser.writable, true)
+    assert.strictEqual(parser.readable, true)
+    assert.strictEqual(parser.writable, true)
   })
 
   it('should parse CSV with header', () => {
@@ -56,13 +56,13 @@ describe('csvParser', () => {
     input.end()
 
     return rdf.waitFor(parser).then(() => {
-      assert.deepEqual(output, expected)
+      assert.deepStrictEqual(output, expected)
     })
   })
 
   it('should parse lines with alternative delimiter', () => {
     const input = new PassThrough()
-    const parser = csvParser({delimiter: ';'})
+    const parser = csvParser({ delimiter: ';' })
 
     input.pipe(parser)
 
@@ -84,7 +84,7 @@ describe('csvParser', () => {
     input.end()
 
     return rdf.waitFor(parser).then(() => {
-      assert.deepEqual(output, expected)
+      assert.deepStrictEqual(output, expected)
     })
   })
 })

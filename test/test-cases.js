@@ -29,11 +29,11 @@ function datasetFromN3Fs (filename) {
     return Promise.resolve(rdf.dataset())
   }
 
-  return rdf.dataset().import(N3Parser.import(fs.createReadStream(filename), {factory: rdf}))
+  return rdf.dataset().import(N3Parser.import(fs.createReadStream(filename), { factory: rdf }))
 }
 
 function datasetFromJsonLdFs (filename) {
-  return rdf.dataset().import(JsonLdParser.import(fs.createReadStream(path.resolve(filename)), {factory: rdf}))
+  return rdf.dataset().import(JsonLdParser.import(fs.createReadStream(path.resolve(filename)), { factory: rdf }))
 }
 
 describe('test-cases', () => {
@@ -62,7 +62,7 @@ describe('test-cases', () => {
         const stream = parser.import(input)
 
         return rdf.dataset().import(stream).then((actual) => {
-          assert.equal(actual.toCanonical(), output.toCanonical())
+          assert.strictEqual(actual.toCanonical(), output.toCanonical())
         })
       })
     })

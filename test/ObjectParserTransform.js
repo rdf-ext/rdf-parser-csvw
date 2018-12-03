@@ -26,18 +26,18 @@ const ns = {
 
 describe('ObjectParserTransform', () => {
   it('should be a constructor', () => {
-    assert.equal(typeof ObjectParserTransform, 'function')
+    assert.strictEqual(typeof ObjectParserTransform, 'function')
   })
 
   it('should have a Transform interface', () => {
     const parser = new ObjectParserTransform()
 
-    assert.equal(parser.readable, true)
-    assert.equal(parser.writable, true)
+    assert.strictEqual(parser.readable, true)
+    assert.strictEqual(parser.writable, true)
   })
 
   it('should parse object', () => {
-    const input = new PassThrough({objectMode: true})
+    const input = new PassThrough({ objectMode: true })
     const parser = new ObjectParserTransform()
 
     input.pipe(parser)
@@ -58,8 +58,8 @@ describe('ObjectParserTransform', () => {
   })
 
   it('should output RDF objects', () => {
-    const input = new PassThrough({objectMode: true})
-    const parser = new ObjectParserTransform({factory: rdf})
+    const input = new PassThrough({ objectMode: true })
+    const parser = new ObjectParserTransform({ factory: rdf })
 
     input.pipe(parser)
 
@@ -96,7 +96,7 @@ describe('ObjectParserTransform', () => {
     input.end()
 
     return rdf.dataset().import(parser).then((actual) => {
-      assert.equal(actual.toCanonical(), expected.toCanonical())
+      assert.strictEqual(actual.toCanonical(), expected.toCanonical())
     })
   })
 })
