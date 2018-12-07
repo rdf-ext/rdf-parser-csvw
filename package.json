@@ -28,6 +28,7 @@
   "dependencies": {
     "byline": "^4.2.2",
     "csv-parse": "^1.2.0",
+    "luxon": "^1.8.2",
     "multipipe": "^1.0.2",
     "rdf-data-model": "^1.0.0",
     "rdf-ext": "^1.0.0",

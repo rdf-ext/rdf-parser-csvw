@@ -56,7 +56,8 @@ describe('test-cases', () => {
         const parser = new CsvwParser({
           factory: rdf,
           baseIRI: path.basename(csvFile),
-          metadata: metadata
+          metadata: metadata,
+          timezone: 'UTC'
         })
         const input = fs.createReadStream(csvFile)
         const stream = parser.import(input)

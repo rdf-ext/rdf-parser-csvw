@@ -1,0 +1,21 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test001-minimal.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID}",
+    "columns": [
+      {
+        "titles": "ID",
+        "propertyUrl": "http://vocab.example.org/id"
+      },
+      {
+        "titles": "Date",
+        "propertyUrl": "http://vocab.example.org/date",
+        "datatype": {
+          "base": "dateTime",
+          "format": "yyyyMMdd HHmmss"
+        }
+      }
+    ]
+  }
+}
