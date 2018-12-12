@@ -1,9 +1,10 @@
 const csvParser = require('./lib/csvParser')
 const parseMetadata = require('./lib/metadata')
+const rdf = require('rdf-data-model')
 const ObjectParserTransform = require('./lib/ObjectParserTransform')
 
 class Parser {
-  constructor ({ metadata, baseIRI = '', factory, timezone, relaxColumnCount, skipLinesWithError } = {}) {
+  constructor ({ metadata, baseIRI = '', factory = rdf, timezone, relaxColumnCount, skipLinesWithError } = {}) {
     this.metadata = metadata
     this.baseIRI = baseIRI
     this.factory = factory
