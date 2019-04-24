@@ -8,27 +8,21 @@ describe('parseDateTime', () => {
     assert.strictEqual(typeof parseDateTime, 'function')
   })
 
-  it('should return a string', () => {
-    const dateTime = parseDateTime('2018-01-01T00:00:00Z')
-
-    assert.strictEqual(typeof dateTime, 'string')
-  })
-
   it('should parse a date time string', () => {
     const dateTime = parseDateTime('2018-01-01T01:00:00.000+0100')
 
-    assert.strictEqual(dateTime, '2018-01-01T00:00:00.000Z')
+    assert.strictEqual(dateTime.toUTC().toISO(), '2018-01-01T00:00:00.000Z')
   })
 
   it('should parse a date time string and set the given timezone', () => {
     const dateTime = parseDateTime('2018-01-01T01:00:00', null, 'Europe/Berlin')
 
-    assert.strictEqual(dateTime, '2018-01-01T00:00:00.000Z')
+    assert.strictEqual(dateTime.toUTC().toISO(), '2018-01-01T00:00:00.000Z')
   })
 
   it('should parse a date time string using the format argument', () => {
     const dateTime = parseDateTime('20180101 000000', 'yyyyMMdd HHmmss', 'UTC')
 
-    assert.strictEqual(dateTime, '2018-01-01T00:00:00.000Z')
+    assert.strictEqual(dateTime.toUTC().toISO(), '2018-01-01T00:00:00.000Z')
   })
 })
