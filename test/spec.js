@@ -9,9 +9,7 @@ const JsonLdParser = require('rdf-parser-jsonld')
 const N3Parser = require('rdf-parser-n3')
 
 const blackList = [
-  'manifest-rdf#test015',
   'manifest-rdf#test016',
-  'manifest-rdf#test018',
   'manifest-rdf#test023',
   'manifest-rdf#test027',
   'manifest-rdf#test029',
@@ -49,7 +47,7 @@ const blackList = [
   'manifest-rdf#test263',
   'manifest-rdf#test264',
   'manifest-rdf#test268',
-  'manifest-rdf#test273',
+  'manifest-rdf#test273', // never remove me
   'manifest-rdf#test282',
   'manifest-rdf#test283',
   'manifest-rdf#test284',
