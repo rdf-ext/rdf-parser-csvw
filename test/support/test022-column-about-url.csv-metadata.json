@@ -1,0 +1,27 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test022-column-about-url.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/object/{id}",
+    "columns": [
+      {
+        "titles": "id",
+        "propertyUrl": "http://example.org/id"
+      },
+      {
+        "titles": "label",
+        "propertyUrl": "http://example.org/label"
+      },
+      {
+        "titles": "childId",
+        "propertyUrl": "http://example.org/id",
+        "valueUrl": "http://example.org/object/{childId}"
+      },
+      {
+        "titles": "childLabel",
+        "aboutUrl": "http://example.org/object/{childId}",
+        "propertyUrl": "http://example.org/label"
+      }
+    ]
+  }
+}
