@@ -1,6 +1,6 @@
 {
   "@context": "http://www.w3.org/ns/csvw",
-  "url": "test001-minimal.csv",
+  "url": "test022-column-about-url.csv",
   "tableSchema": {
     "aboutUrl": "http://example.org/object/{id}",
     "columns": [
