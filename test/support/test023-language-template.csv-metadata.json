@@ -1,0 +1,22 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test023-language-template.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/object/{id}",
+    "columns": [
+      {
+        "titles": "id",
+        "propertyUrl": "http://example.org/id"
+      },
+      {
+        "titles": "label",
+        "propertyUrl": "http://example.org/label",
+        "lang": "{language}"
+      },
+      {
+        "titles": "language",
+        "suppressOutput": true
+      }
+    ]
+  }
+}
