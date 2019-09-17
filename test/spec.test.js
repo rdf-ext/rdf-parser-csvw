@@ -1,12 +1,12 @@
-/* global describe, it, run */
+/* global describe, it */
 
 const assert = require('assert')
 const fs = require('fs')
 const path = require('path')
 const rdf = require('rdf-ext')
 const CsvwParser = require('..')
-const JsonLdParser = require('rdf-parser-jsonld')
-const N3Parser = require('rdf-parser-n3')
+const JsonLdParser = require('@rdfjs/parser-jsonld')
+const N3Parser = require('@rdfjs/parser-n3')
 
 const blackList = [
   'manifest-rdf#test016',
@@ -58,11 +58,15 @@ const blackList = [
 ]
 
 function datasetFromN3Fs (filename) {
-  return rdf.dataset().import(N3Parser.import(fs.createReadStream(filename), { factory: rdf }))
+  const parser = new N3Parser({ baseIRI: new String('') }) // eslint-disable-line no-new-wrappers
+
+  return rdf.dataset().import(parser.import(fs.createReadStream(filename), { factory: rdf }))
 }
 
 function datasetFromJsonLdFs (filename) {
-  return rdf.dataset().import(JsonLdParser.import(fs.createReadStream(filename), { factory: rdf }))
+  const parser = new JsonLdParser()
+
+  return rdf.dataset().import(parser.import(fs.createReadStream(filename), { factory: rdf }))
 }
 
 function loadTests () {
@@ -169,11 +173,7 @@ loadTests().then((tests) => {
         })
       })
     })
-
-    run()
   })
 }).catch((err) => {
   console.error(err.stack)
-
-  run()
 })

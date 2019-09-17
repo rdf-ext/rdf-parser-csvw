@@ -2,16 +2,16 @@
 
 const assert = require('assert')
 const rdf = require('rdf-ext')
-const csvParser = require('../lib/csvParser')
-const PassThrough = require('readable-stream').PassThrough
+const CsvParser = require('../lib/CsvParser')
+const { PassThrough } = require('readable-stream')
 
 describe('csvParser', () => {
   it('should be a function', () => {
-    assert.strictEqual(typeof csvParser, 'function')
+    assert.strictEqual(typeof CsvParser, 'function')
   })
 
   it('should return a Transform', () => {
-    const parser = csvParser()
+    const parser = new CsvParser()
 
     assert.strictEqual(parser.readable, true)
     assert.strictEqual(parser.writable, true)
@@ -19,7 +19,7 @@ describe('csvParser', () => {
 
   it('should parse CSV with header', () => {
     const input = new PassThrough()
-    const parser = csvParser()
+    const parser = new CsvParser()
 
     input.pipe(parser)
 
@@ -34,7 +34,7 @@ describe('csvParser', () => {
 
   it('should output objects with line number and row data', () => {
     const input = new PassThrough()
-    const parser = csvParser()
+    const parser = new CsvParser()
 
     input.pipe(parser)
 
@@ -62,7 +62,7 @@ describe('csvParser', () => {
 
   it('should parse lines with alternative delimiter', () => {
     const input = new PassThrough()
-    const parser = csvParser({ delimiter: ';' })
+    const parser = new CsvParser({ delimiter: ';' })
 
     input.pipe(parser)
 

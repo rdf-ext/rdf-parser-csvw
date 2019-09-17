@@ -3,7 +3,7 @@
 const assert = require('assert')
 const rdf = require('rdf-ext')
 const ObjectParserTransform = require('../lib/ObjectParserTransform')
-const PassThrough = require('readable-stream').PassThrough
+const { PassThrough } = require('readable-stream')
 
 const ns = {
   csvw: {
