@@ -1,6 +1,6 @@
-const csvParser = require('./lib/csvParser')
+const CsvParser = require('./lib/CsvParser')
 const parseMetadata = require('./lib/metadata')
-const rdf = require('rdf-data-model')
+const rdf = require('@rdfjs/data-model')
 const ObjectParserTransform = require('./lib/ObjectParserTransform')
 
 class Parser {
@@ -24,7 +24,7 @@ class Parser {
     const parsedMetadata = parseMetadata(metadata, { baseIRI, factory, timezone })
     const delimiter = parsedMetadata.delimiter
 
-    const reader = csvParser({ delimiter, relaxColumnCount, skipLinesWithError })
+    const reader = new CsvParser({ delimiter, relaxColumnCount, skipLinesWithError })
 
     const output = new ObjectParserTransform({ baseIRI, factory, metadata: parsedMetadata, timezone })
 

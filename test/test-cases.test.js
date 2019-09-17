@@ -6,9 +6,8 @@ const glob = require('glob')
 const path = require('path')
 const rdf = require('rdf-ext')
 const CsvwParser = require('..')
-const JsonLdParser = require('rdf-parser-jsonld')
-const N3Parser = require('rdf-parser-n3')
-const Promise = require('bluebird')
+const JsonLdParser = require('@rdfjs/parser-jsonld')
+const N3Parser = require('@rdfjs/parser-n3')
 
 const blackList = [
   '006',
@@ -29,11 +28,15 @@ function datasetFromN3Fs (filename) {
     return Promise.resolve(rdf.dataset())
   }
 
-  return rdf.dataset().import(N3Parser.import(fs.createReadStream(filename), { factory: rdf }))
+  const parser = new N3Parser({ baseIRI: new String(''), factory: rdf }) // eslint-disable-line no-new-wrappers
+
+  return rdf.dataset().import(parser.import(fs.createReadStream(filename)))
 }
 
 function datasetFromJsonLdFs (filename) {
-  return rdf.dataset().import(JsonLdParser.import(fs.createReadStream(path.resolve(filename)), { factory: rdf }))
+  const parser = new JsonLdParser({ factory: rdf })
+
+  return rdf.dataset().import(parser.import(fs.createReadStream(path.resolve(filename))))
 }
 
 describe('test-cases', () => {
@@ -52,7 +55,7 @@ describe('test-cases', () => {
       return Promise.all([
         datasetFromJsonLdFs(metadataFile),
         datasetFromN3Fs(outputFile)
-      ]).spread((metadata, output) => {
+      ]).then(([metadata, output]) => {
         const parser = new CsvwParser({
           factory: rdf,
           baseIRI: path.basename(csvFile),
