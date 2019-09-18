@@ -1,0 +1,20 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test024-quotechar.csv",
+  "dialect": {
+    "quoteChar": "~"
+  },
+  "tableSchema": {
+    "aboutUrl": "http://example.org/object/{id}",
+    "columns": [
+      {
+        "titles": "id",
+        "propertyUrl": "http://example.org/id"
+      },
+      {
+        "titles": "label",
+        "propertyUrl": "http://example.org/label"
+      }
+    ]
+  }
+}

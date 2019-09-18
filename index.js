@@ -22,9 +22,13 @@ class Parser {
     skipLinesWithError = this.skipLinesWithError
   } = {}) {
     const parsedMetadata = parseMetadata(metadata, { baseIRI, factory, timezone })
-    const delimiter = parsedMetadata.delimiter
 
-    const reader = new CsvParser({ delimiter, relaxColumnCount, skipLinesWithError })
+    const reader = new CsvParser({
+      delimiter: parsedMetadata.delimiter,
+      quoteChar: parsedMetadata.quoteChar,
+      relaxColumnCount,
+      skipLinesWithError
+    })
 
     const output = new ObjectParserTransform({ baseIRI, factory, metadata: parsedMetadata, timezone })
 
