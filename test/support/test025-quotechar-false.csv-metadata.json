@@ -1,0 +1,23 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test025-quotechar-false.csv",
+  "dialect": {
+    "quoteChar": {
+      "@value": "false",
+      "@type": "xsd:boolean"
+    }
+  },
+  "tableSchema": {
+    "aboutUrl": "http://example.org/object/{id}",
+    "columns": [
+      {
+        "titles": "id",
+        "propertyUrl": "http://example.org/id"
+      },
+      {
+        "titles": "label",
+        "propertyUrl": "http://example.org/label"
+      }
+    ]
+  }
+}
