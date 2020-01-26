@@ -4,7 +4,7 @@ A [CSV on the Web](https://www.w3.org/TR/tabular-data-primer/) parser with [RDFJ
 
 The focus of this library is to provide a fast, streaming way to convert tabluar data to RDF. It is not a complete implementation of CSV on the Web but what we need in our projects so far.
 
-This implementation is provided by [Zazuko](https://zazuko.com/). For creating the CSV on the Web mapping files you might consider using a lightweight domain specific language (DSL) or a web based frontend:
+For creating the CSV on the Web mapping files you might consider using a lightweight domain specific language (DSL) or a web based frontend:
 
 * [RDF mapping DSL](https://github.com/zazuko/rdf-mapping-dsl-user) - For any kind of mappings
 * [RDF Data Cube curation service](https://github.com/zazuko/data-cube-curation/) - Aimed at [OLAP cube](https://en.wikipedia.org/wiki/OLAP_cube) oriented, tabluar output.
