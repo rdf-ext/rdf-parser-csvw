@@ -34,12 +34,16 @@ class Parser {
 
     input.on('end', () => {
       if (!output.readable) {
-        output.emit('end')
+        output.end()
       }
     })
 
+    reader.on('error', err => {
+      output.destroy(err)
+    })
+
     input.on('error', (err) => {
-      output.emit('error', err)
+      output.destroy(err)
     })
 
     input.pipe(reader).pipe(output)
