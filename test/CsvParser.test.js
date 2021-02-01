@@ -1,6 +1,7 @@
 /* global describe, it */
 
 const assert = require('assert')
+const getStream = require('get-stream')
 const rdf = require('rdf-ext')
 const CsvParser = require('../lib/CsvParser')
 const { PassThrough } = require('readable-stream')
@@ -113,6 +114,21 @@ describe('csvParser', () => {
 
     return rdf.waitFor(parser).then(() => {
       assert.deepStrictEqual(output, expected)
+    })
+  })
+
+  it('should handle errors', async () => {
+    const input = new PassThrough()
+    const parser = new CsvParser({ delimiter: ';' })
+
+    input.pipe(parser)
+    input.write('kzy1,key2\n')
+    input.write('value1_1;value2_1\n')
+    input.write('value1_2,value2_2\n')
+    input.end()
+
+    await assert.rejects(async () => {
+      await getStream.array(parser)
     })
   })
 })
