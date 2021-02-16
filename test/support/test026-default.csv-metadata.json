@@ -1,0 +1,18 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test026-default.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID}",
+    "columns": [
+      {
+        "titles": "ID",
+        "propertyUrl": "http://vocab.example.org/id"
+      },
+      {
+        "titles": "Label",
+        "propertyUrl": "http://vocab.example.org/label",
+        "default": "DEFAULT VALUE"
+      }
+    ]
+  }
+}
