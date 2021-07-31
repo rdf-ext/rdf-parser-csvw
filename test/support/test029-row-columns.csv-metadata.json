@@ -13,7 +13,7 @@
         "propertyUrl": "http://schema.org/{_name}"
       },
       {
-        "titles": "Row",
+        "titles": "ID",
         "aboutUrl": "#row={_sourceRow}",
         "propertyUrl": "http://schema.org/about",
         "valueUrl": "http://example.org/data.csv#{_row}"
