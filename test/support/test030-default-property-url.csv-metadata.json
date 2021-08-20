@@ -1,0 +1,8 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test030-default-property-url.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/data.csv#{_row}",
+    "propertyUrl": "http://example.org/default#{_name}"
+  }
+}

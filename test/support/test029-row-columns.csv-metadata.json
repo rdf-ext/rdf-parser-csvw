@@ -1,0 +1,23 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test029-row-columns.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/data.csv#{_row}",
+    "propertyUrl": "http://example.org/vocab#{_name}",
+    "columns": [
+      {
+        "titles": "ID"
+      },
+      {
+        "titles": "Name",
+        "propertyUrl": "http://schema.org/{_name}"
+      },
+      {
+        "titles": "ID",
+        "aboutUrl": "#row={_sourceRow}",
+        "propertyUrl": "http://schema.org/about",
+        "valueUrl": "http://example.org/data.csv#{_row}"
+      }
+    ]
+  }
+}
