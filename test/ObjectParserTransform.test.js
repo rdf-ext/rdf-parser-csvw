@@ -30,7 +30,7 @@ describe('ObjectParserTransform', () => {
   })
 
   it('should have a Transform interface', () => {
-    const parser = new ObjectParserTransform()
+    const parser = new ObjectParserTransform({ metadata: rdf.dataset() })
 
     assert.strictEqual(parser.readable, true)
     assert.strictEqual(parser.writable, true)
@@ -38,7 +38,11 @@ describe('ObjectParserTransform', () => {
 
   it('should parse object', () => {
     const input = new PassThrough({ objectMode: true })
-    const parser = new ObjectParserTransform()
+    const tableSchema = {
+      aboutUrl: () => rdf.blankNode(),
+      columns: () => []
+    }
+    const parser = new ObjectParserTransform({ tableSchema })
 
     input.pipe(parser)
 
