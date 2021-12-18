@@ -32,7 +32,8 @@
     "lodash": "^4.17.15",
     "luxon": "^1.17.3",
     "readable-stream": "^3.4.0",
-    "uri-templates": "^0.2.0"
+    "strict-uri-encode": "^2.0.0",
+    "url-template": "^2"
   },
   "devDependencies": {
     "@rdfjs/parser-jsonld": "^1.1.2",
