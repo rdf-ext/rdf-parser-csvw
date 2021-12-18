@@ -7,7 +7,7 @@
       {
         "titles": "(foo)",
         "propertyUrl": "http://example.org/vocab#{_name}",
-        "valueUrl": "http://example.org/object/{(foo)}"
+        "valueUrl": "http://example.org/object/{%28foo%29}"
       }
     ]
   }
