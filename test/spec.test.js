@@ -3,7 +3,9 @@
 const assert = require('assert')
 const fs = require('fs')
 const path = require('path')
-const rdf = require('rdf-ext')
+const fromStream = require('rdf-dataset-ext/fromStream')
+const toCanonical = require('rdf-dataset-ext/toCanonical')
+const rdf = require('./support/factory')
 const CsvwParser = require('..')
 const JsonLdParser = require('@rdfjs/parser-jsonld')
 const N3Parser = require('@rdfjs/parser-n3')
@@ -60,13 +62,13 @@ const blackList = [
 function datasetFromN3Fs (filename) {
   const parser = new N3Parser({ baseIRI: new String('') }) // eslint-disable-line no-new-wrappers
 
-  return rdf.dataset().import(parser.import(fs.createReadStream(filename), { factory: rdf }))
+  return fromStream(rdf.dataset(), parser.import(fs.createReadStream(filename), { factory: rdf }))
 }
 
 function datasetFromJsonLdFs (filename) {
   const parser = new JsonLdParser()
 
-  return rdf.dataset().import(parser.import(fs.createReadStream(filename), { factory: rdf }))
+  return fromStream(rdf.dataset(), parser.import(fs.createReadStream(filename), { factory: rdf }))
 }
 
 function loadTests () {
@@ -79,40 +81,32 @@ function loadTests () {
   }
 
   return datasetFromN3Fs(manifestFile).then((manifest) => {
-    let tests = manifest.match(
+    let tests = [...manifest.match(
       null,
       rdf.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'),
       rdf.namedNode('http://www.w3.org/2013/csvw/tests/vocab#ToRdfTest')
-    ).toArray().map((test) => {
+    )].map((test) => {
       return test.subject
     }).map((test) => {
-      const name = manifest.match(test, rdf.namedNode('http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#name'))
-        .toArray()
+      const name = [...manifest.match(test, rdf.namedNode('http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#name'))]
         .map((t) => {
           return t.object.value
-        })
-        .shift()
+        })[0]
 
-      const action = manifest.match(test, rdf.namedNode('http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#action'))
-        .toArray()
+      const action = [...manifest.match(test, rdf.namedNode('http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#action'))]
         .map((t) => {
           return t.object.value
-        })
-        .shift()
+        })[0]
 
-      const result = manifest.match(test, rdf.namedNode('http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#result'))
-        .toArray()
+      const result = [...manifest.match(test, rdf.namedNode('http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#result'))]
         .map((t) => {
           return t.object.value
-        })
-        .shift()
+        })[0]
 
-      const implicit = manifest.match(test, rdf.namedNode('http://www.w3.org/2013/csvw/tests/vocab#implicit'))
-        .toArray()
+      const implicit = [...manifest.match(test, rdf.namedNode('http://www.w3.org/2013/csvw/tests/vocab#implicit'))]
         .map((t) => {
           return t.object.value
-        })
-        .shift()
+        })[0]
 
       const label = name + '<' + test.value + '>'
 
@@ -164,12 +158,12 @@ loadTests().then((tests) => {
 
         return Promise.all([
           datasetFromN3Fs('test/spec/' + test.result),
-          rdf.dataset().import(stream)
+          fromStream(rdf.dataset(), stream)
         ]).then((results) => {
           const expected = results[0]
           const actual = results[1]
 
-          assert.strictEqual(actual.toCanonical(), expected.toCanonical())
+          assert.strictEqual(toCanonical(actual), toCanonical(expected))
         })
       })
     })

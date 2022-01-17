@@ -1,9 +1,12 @@
 /* global describe, it */
 
 const assert = require('assert')
-const rdf = require('rdf-ext')
+const fromStream = require('rdf-dataset-ext/fromStream')
+const toCanonical = require('rdf-dataset-ext/toCanonical')
+const rdf = require('./support/factory')
 const ObjectParserTransform = require('../lib/ObjectParserTransform')
 const { PassThrough } = require('readable-stream')
+const waitFor = require('./support/waitFor')
 
 const ns = {
   csvw: {
@@ -54,7 +57,7 @@ describe('ObjectParserTransform', () => {
 
     input.end()
 
-    return rdf.waitFor(parser)
+    return waitFor(parser)
   })
 
   it('should output RDF objects', () => {
@@ -95,8 +98,8 @@ describe('ObjectParserTransform', () => {
 
     input.end()
 
-    return rdf.dataset().import(parser).then((actual) => {
-      assert.strictEqual(actual.toCanonical(), expected.toCanonical())
+    return fromStream(rdf.dataset(), parser).then((actual) => {
+      assert.strictEqual(toCanonical(actual), toCanonical(expected))
     })
   })
 })

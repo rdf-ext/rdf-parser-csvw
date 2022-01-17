@@ -35,12 +35,13 @@
     "uri-templates": "^0.2.0"
   },
   "devDependencies": {
+    "@rdfjs/dataset": "^1.1.1",
     "@rdfjs/parser-jsonld": "^1.1.2",
     "@rdfjs/parser-n3": "^1.1.3",
     "get-stream": "^6.0.0",
     "glob": "^7.1.4",
     "mocha": "^6.2.0",
-    "rdf-ext": "^1.3.0",
+    "rdf-dataset-ext": "^1.0.0",
     "standard": "^14.3.0"
   }
 }
