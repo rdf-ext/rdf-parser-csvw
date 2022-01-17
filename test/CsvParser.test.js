@@ -2,9 +2,9 @@
 
 const assert = require('assert')
 const getStream = require('get-stream')
-const rdf = require('rdf-ext')
 const CsvParser = require('../lib/CsvParser')
 const { PassThrough } = require('readable-stream')
+const waitFor = require('./support/waitFor')
 
 describe('csvParser', () => {
   it('should be a function', () => {
@@ -30,7 +30,7 @@ describe('csvParser', () => {
     input.write('value0,value1\n')
     input.end()
 
-    return rdf.waitFor(parser)
+    return waitFor(parser)
   })
 
   it('should parse CSV with BOM', async () => {
@@ -56,7 +56,7 @@ describe('csvParser', () => {
     input.write('value0,value1\n')
     input.end()
 
-    await rdf.waitFor(parser)
+    await waitFor(parser)
 
     assert.deepStrictEqual(output, expected)
   })
@@ -84,7 +84,7 @@ describe('csvParser', () => {
     input.write('value0,value1\n')
     input.end()
 
-    return rdf.waitFor(parser).then(() => {
+    return waitFor(parser).then(() => {
       assert.deepStrictEqual(output, expected)
     })
   })
@@ -112,7 +112,7 @@ describe('csvParser', () => {
     input.write('value0;value1\n')
     input.end()
 
-    return rdf.waitFor(parser).then(() => {
+    return waitFor(parser).then(() => {
       assert.deepStrictEqual(output, expected)
     })
   })

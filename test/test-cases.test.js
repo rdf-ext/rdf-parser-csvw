@@ -2,9 +2,11 @@
 
 const assert = require('assert')
 const fs = require('fs')
+const fromStream = require('rdf-dataset-ext/fromStream')
+const toCanonical = require('rdf-dataset-ext/toCanonical')
 const glob = require('glob')
 const path = require('path')
-const rdf = require('rdf-ext')
+const rdf = require('./support/factory')
 const CsvwParser = require('..')
 const JsonLdParser = require('@rdfjs/parser-jsonld')
 const N3Parser = require('@rdfjs/parser-n3')
@@ -30,13 +32,13 @@ function datasetFromN3Fs (filename) {
 
   const parser = new N3Parser({ baseIRI: new String(''), factory: rdf }) // eslint-disable-line no-new-wrappers
 
-  return rdf.dataset().import(parser.import(fs.createReadStream(filename)))
+  return fromStream(rdf.dataset(), parser.import(fs.createReadStream(filename)))
 }
 
 function datasetFromJsonLdFs (filename) {
   const parser = new JsonLdParser({ factory: rdf })
 
-  return rdf.dataset().import(parser.import(fs.createReadStream(path.resolve(filename))))
+  return fromStream(rdf.dataset(), parser.import(fs.createReadStream(path.resolve(filename))))
 }
 
 describe('test-cases', () => {
@@ -65,8 +67,8 @@ describe('test-cases', () => {
         const input = fs.createReadStream(csvFile)
         const stream = parser.import(input)
 
-        return rdf.dataset().import(stream).then((actual) => {
-          assert.strictEqual(actual.toCanonical(), output.toCanonical())
+        return fromStream(rdf.dataset(), stream).then((actual) => {
+          assert.strictEqual(toCanonical(actual), toCanonical(output))
         })
       })
     })
