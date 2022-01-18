@@ -117,6 +117,35 @@ describe('csvParser', () => {
     })
   })
 
+  it('should parse lines with alternative lineTerminator and UTF16LE encoding', () => {
+    const input = new PassThrough()
+    const parser = new CsvParser({ lineTerminators: ['\r\n'] })
+
+    input.pipe(parser)
+
+    const output = []
+    const expected = [{
+      line: 2,
+      row: {
+        key0: 'value0',
+        key1: 'value1'
+      }
+    }]
+
+    parser.on('data', (data) => {
+      output.push(data)
+    })
+
+    input.write(new Uint8Array([0xff, 0xfe]))
+    input.write('key0,key1\r\n', 'utf16le')
+    input.write('value0,value1\r\n', 'utf16le')
+    input.end()
+
+    return waitFor(parser).then(() => {
+      assert.deepStrictEqual(output, expected)
+    })
+  })
+
   it('should handle errors', async () => {
     const input = new PassThrough()
     const parser = new CsvParser({ delimiter: ';' })
