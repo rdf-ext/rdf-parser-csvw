@@ -1,6 +1,6 @@
 {
   "name": "rdf-parser-csvw",
-  "version": "0.15.1",
+  "version": "0.15.2",
   "description": "CSV on the Web parser",
   "main": "index.js",
   "scripts": {
