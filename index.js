@@ -25,6 +25,7 @@ class Parser {
 
     const reader = new CsvParser({
       delimiter: parsedMetadata.delimiter,
+      lineTerminators: parsedMetadata.lineTerminators,
       quoteChar: parsedMetadata.quoteChar,
       relaxColumnCount,
       skipLinesWithError
