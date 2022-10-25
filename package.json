@@ -28,7 +28,7 @@
   "dependencies": {
     "@rdfjs/data-model": "^1.1.2",
     "commander": "^3.0.1",
-    "csv-parse": "^4.4.5",
+    "csv-parse": "^5.3.1",
     "lodash": "^4.17.15",
     "luxon": "^1.17.3",
     "readable-stream": "^3.4.0",
