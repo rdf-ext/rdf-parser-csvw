@@ -1,0 +1,14 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test031-strict-url-encode.csv",
+  "tableSchema": {
+    "aboutUrl": "http://example.org/data.csv#{_row}",
+    "columns": [
+      {
+        "titles": "(foo)",
+        "propertyUrl": "http://example.org/vocab#{_name}",
+        "valueUrl": "http://example.org/object/{%28foo%29}"
+      }
+    ]
+  }
+}
