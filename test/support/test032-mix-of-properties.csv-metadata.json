@@ -1,0 +1,29 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test032-mix-of-properties.csv",
+  "dialect": {
+    "delimiter": ",",
+    "header": true,
+    "quoteChar": "\""
+  },
+  "tableSchema": {
+    "aboutUrl": "https://example.com/station/{station_id}",
+    "columns": [
+      {
+        "lang": "de",
+        "propertyUrl": "http://schema.org/name",
+        "titles": "STATION_NAME_DE"
+      },
+      {
+        "datatype": "string",
+        "propertyUrl": "http://schema.org/identifier",
+        "titles": "station_id"
+      },
+      {
+        "lang": "fr",
+        "propertyUrl": "http://schema.org/name",
+        "titles": "STATION_NAME_FR"
+      }
+    ]
+  }
+}
