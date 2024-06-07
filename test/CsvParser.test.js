@@ -1,24 +1,22 @@
-/* global describe, it */
-
-const assert = require('assert')
-const getStream = require('get-stream')
-const CsvParser = require('../lib/CsvParser')
-const { PassThrough } = require('readable-stream')
-const waitFor = require('./support/waitFor')
+import { deepStrictEqual, rejects, strictEqual } from 'node:assert'
+import { describe, it } from 'mocha'
+import { PassThrough } from 'readable-stream'
+import chunks from 'stream-chunks/chunks.js'
+import CsvParser from '../lib/CsvParser.js'
 
 describe('csvParser', () => {
   it('should be a function', () => {
-    assert.strictEqual(typeof CsvParser, 'function')
+    strictEqual(typeof CsvParser, 'function')
   })
 
   it('should return a Transform', () => {
     const parser = new CsvParser()
 
-    assert.strictEqual(parser.readable, true)
-    assert.strictEqual(parser.writable, true)
+    strictEqual(parser.readable, true)
+    strictEqual(parser.writable, true)
   })
 
-  it('should parse CSV with header', () => {
+  it('should parse CSV with header', async () => {
     const input = new PassThrough()
     const parser = new CsvParser()
 
@@ -30,7 +28,7 @@ describe('csvParser', () => {
     input.write('value0,value1\n')
     input.end()
 
-    return waitFor(parser)
+    await chunks(parser)
   })
 
   it('should parse CSV with BOM', async () => {
@@ -48,7 +46,7 @@ describe('csvParser', () => {
       }
     }]
 
-    parser.on('data', (data) => {
+    parser.on('data', data => {
       output.push(data)
     })
 
@@ -56,12 +54,12 @@ describe('csvParser', () => {
     input.write('value0,value1\n')
     input.end()
 
-    await waitFor(parser)
+    await chunks(parser)
 
-    assert.deepStrictEqual(output, expected)
+    deepStrictEqual(output, expected)
   })
 
-  it('should output objects with line number and row data', () => {
+  it('should output objects with line number and row data', async () => {
     const input = new PassThrough()
     const parser = new CsvParser()
 
@@ -76,7 +74,7 @@ describe('csvParser', () => {
       }
     }]
 
-    parser.on('data', (data) => {
+    parser.on('data', data => {
       output.push(data)
     })
 
@@ -84,12 +82,12 @@ describe('csvParser', () => {
     input.write('value0,value1\n')
     input.end()
 
-    return waitFor(parser).then(() => {
-      assert.deepStrictEqual(output, expected)
-    })
+    await chunks(parser)
+
+    deepStrictEqual(output, expected)
   })
 
-  it('should parse lines with alternative delimiter', () => {
+  it('should parse lines with alternative delimiter', async () => {
     const input = new PassThrough()
     const parser = new CsvParser({ delimiter: ';' })
 
@@ -104,7 +102,7 @@ describe('csvParser', () => {
       }
     }]
 
-    parser.on('data', (data) => {
+    parser.on('data', data => {
       output.push(data)
     })
 
@@ -112,12 +110,12 @@ describe('csvParser', () => {
     input.write('value0;value1\n')
     input.end()
 
-    return waitFor(parser).then(() => {
-      assert.deepStrictEqual(output, expected)
-    })
+    await chunks(parser)
+
+    deepStrictEqual(output, expected)
   })
 
-  it('should parse lines with alternative lineTerminator and UTF16LE encoding', () => {
+  it('should parse lines with alternative lineTerminator and UTF16LE encoding', async () => {
     const input = new PassThrough()
     const parser = new CsvParser({ lineTerminators: ['\r\n'] })
 
@@ -132,7 +130,7 @@ describe('csvParser', () => {
       }
     }]
 
-    parser.on('data', (data) => {
+    parser.on('data', data => {
       output.push(data)
     })
 
@@ -141,9 +139,9 @@ describe('csvParser', () => {
     input.write('value0,value1\r\n', 'utf16le')
     input.end()
 
-    return waitFor(parser).then(() => {
-      assert.deepStrictEqual(output, expected)
-    })
+    await parser
+
+    deepStrictEqual(output, expected)
   })
 
   it('should handle errors', async () => {
@@ -156,8 +154,8 @@ describe('csvParser', () => {
     input.write('value1_2,value2_2\n')
     input.end()
 
-    await assert.rejects(async () => {
-      await getStream.array(parser)
+    await rejects(async () => {
+      await chunks(parser)
     })
   })
 })

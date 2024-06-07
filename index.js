@@ -1,7 +1,7 @@
-const CsvParser = require('./lib/CsvParser')
-const parseMetadata = require('./lib/metadata')
-const rdf = require('@rdfjs/data-model')
-const ObjectParserTransform = require('./lib/ObjectParserTransform')
+import rdf from '@rdfjs/data-model'
+import CsvParser from './lib/CsvParser.js'
+import parseMetadata from './lib/metadata/index.js'
+import ObjectParserTransform from './lib/ObjectParserTransform.js'
 
 class Parser {
   constructor ({ metadata, baseIRI = '', factory = rdf, timezone, relaxColumnCount, skipLinesWithError } = {}) {
@@ -43,7 +43,7 @@ class Parser {
       output.destroy(err)
     })
 
-    input.on('error', (err) => {
+    input.on('error', err => {
       output.destroy(err)
     })
 
@@ -57,4 +57,4 @@ class Parser {
   }
 }
 
-module.exports = Parser
+export default Parser

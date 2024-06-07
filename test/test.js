@@ -1,8 +1,8 @@
-const { rejects } = require('assert')
-const getStream = require('get-stream')
-const { describe, it } = require('mocha')
-const { PassThrough } = require('readable-stream')
-const CsvwParser = require('../index.js')
+import { rejects } from 'node:assert'
+import { describe, it } from 'mocha'
+import { PassThrough } from 'readable-stream'
+import chunks from 'stream-chunks/chunks.js'
+import CsvwParser from '../index.js'
 
 describe('rdf-parser-csv', () => {
   it('should handle errors', async () => {
@@ -17,7 +17,7 @@ describe('rdf-parser-csv', () => {
     const result = parser.import(input)
 
     await rejects(async () => {
-      await getStream.array(result)
+      await chunks(result)
     })
   })
 })
