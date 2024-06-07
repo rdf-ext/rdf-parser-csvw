@@ -1,12 +1,10 @@
-/* global describe, it */
-
-const assert = require('assert')
-const fromStream = require('rdf-dataset-ext/fromStream')
-const toCanonical = require('rdf-dataset-ext/toCanonical')
-const rdf = require('./support/factory')
-const ObjectParserTransform = require('../lib/ObjectParserTransform')
-const { PassThrough } = require('readable-stream')
-const waitFor = require('./support/waitFor')
+import { strictEqual } from 'node:assert'
+import { describe, it } from 'mocha'
+import rdf from 'rdf-ext'
+import { datasetEqual } from 'rdf-test/assert.js'
+import { PassThrough } from 'readable-stream'
+import chunks from 'stream-chunks/chunks.js'
+import ObjectParserTransform from '../lib/ObjectParserTransform.js'
 
 const ns = {
   csvw: {
@@ -29,17 +27,17 @@ const ns = {
 
 describe('ObjectParserTransform', () => {
   it('should be a constructor', () => {
-    assert.strictEqual(typeof ObjectParserTransform, 'function')
+    strictEqual(typeof ObjectParserTransform, 'function')
   })
 
   it('should have a Transform interface', () => {
     const parser = new ObjectParserTransform()
 
-    assert.strictEqual(parser.readable, true)
-    assert.strictEqual(parser.writable, true)
+    strictEqual(parser.readable, true)
+    strictEqual(parser.writable, true)
   })
 
-  it('should parse object', () => {
+  it('should parse object', async () => {
     const input = new PassThrough({ objectMode: true })
     const parser = new ObjectParserTransform()
 
@@ -57,10 +55,10 @@ describe('ObjectParserTransform', () => {
 
     input.end()
 
-    return waitFor(parser)
+    await chunks(parser)
   })
 
-  it('should output RDF objects', () => {
+  it('should output RDF objects', async () => {
     const input = new PassThrough({ objectMode: true })
     const parser = new ObjectParserTransform({ factory: rdf })
 
@@ -98,8 +96,8 @@ describe('ObjectParserTransform', () => {
 
     input.end()
 
-    return fromStream(rdf.dataset(), parser).then((actual) => {
-      assert.strictEqual(toCanonical(actual), toCanonical(expected))
-    })
+    const actual = await rdf.dataset().import(parser)
+
+    datasetEqual(actual, expected)
   })
 })
