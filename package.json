@@ -36,7 +36,7 @@
     "uri-templates": "^0.2.0"
   },
   "devDependencies": {
-    "c8": "^9.1.0",
+    "c8": "^10.0.0",
     "glob": "^10.4.1",
     "mocha": "^10.4.0",
     "rdf-ext": "^2.5.1",
