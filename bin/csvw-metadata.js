@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import program from 'commander'
+import { program } from 'commander'
 import MetadataBuilder from '../lib/MetadataBuilder.js'
 
 program
