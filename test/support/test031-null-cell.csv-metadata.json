@@ -1,0 +1,20 @@
+{
+    "@context": "http://www.w3.org/ns/csvw",
+    "url": "nulls.csv",
+    "tableSchema": {
+        "columns": [
+            {
+                "titles": "a",
+                "name": "a",
+                "propertyUrl": "http://example.org/a",
+                "valueUrl": "http://example.org/{a}"
+            },
+            {
+                "titles": "b",
+                "name": "b",
+                "propertyUrl": "http://example.org/b",
+                "valueUrl": "http://example.org/{b}"
+            }
+        ]
+    }
+}
