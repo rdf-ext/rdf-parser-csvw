@@ -41,7 +41,7 @@
     "mocha": "^11.0.1",
     "rdf-ext": "^2.5.1",
     "rdf-test": "^0.1.0",
-    "shelljs": "^0.8.5",
+    "shelljs": "^0.9.1",
     "stream-chunks": "^1.0.0",
     "stricter-standard": "^0.3.1"
   }
