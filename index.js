@@ -28,7 +28,8 @@ class Parser {
       lineTerminators: parsedMetadata.lineTerminators,
       quoteChar: parsedMetadata.quoteChar,
       relaxColumnCount,
-      skipLinesWithError
+      skipLinesWithError,
+      trim: parsedMetadata.trim
     })
 
     const output = new ObjectParserTransform({ baseIRI, factory, metadata: parsedMetadata, timezone })
