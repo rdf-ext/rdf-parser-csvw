@@ -1,0 +1,20 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "test033-trim-start.csv",
+  "dialect": {
+    "trim": "start"
+  },
+  "tableSchema": {
+    "aboutUrl": "http://example.org/id/{ID}",
+    "columns": [
+      {
+        "titles": "ID",
+        "propertyUrl": "http://vocab.example.org/id"
+      },
+      {
+        "titles": "String",
+        "propertyUrl": "http://vocab.example.org/string"
+      }
+    ]
+  }
+}
